@@ -11,7 +11,10 @@
     "react-dom": "^16.13.1",
     "react-popper": "^2.2.2",
     "react-scripts": "3.4.1",
-    "reactstrap": "^8.4.1"
+    "reactstrap": "^8.4.1",
+    "roboto": "^0.8.2",
+    "slab": "^0.2.0",
+    "zilla": "^1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
