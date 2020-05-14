@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
-import { Card, CardImg} from 'reactstrap';
+import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
 
 class Directory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedComponent: null
+            selectedMarketplace: null
         }
     };
 
-    onComponentSelect(creatorhub) {
-        this.setState({selectedComponent: creatorhub});
+    onMarketplaceSelect(marketplace) {
+        this.setState({ selectedMarketplace: marketplace });
+    }
+
+    renderSelectedMarketplace(marketplace) {
+        if (marketplace) {
+            return (
+                <Card>
+                    <CardImg top src={marketplace.image} alt={marketplace.name} />
+                    <CardBody>
+                        <CardTitle><h5>{marketplace.title}</h5></CardTitle>
+                        <CardText><p>{marketplace.description}</p></CardText>
+                    </CardBody>
+                </Card>
+            );
+        }
+        return <div />;
     }
 
     render() {
-        const directory = this.props.creatorhub.map(creatorhub => {
+        const directory = this.props.marketplace.map(marketplace => {
             return (
-                <div key={creatorhub.id} className="col-md-5 m-1">
-                    <Card>
-                        <CardImg width="50%" src={creatorhub.image} alt={creatorhub.name} />
-                            <h4>{creatorhub.description}</h4>
+                <div key={marketplace.id} className="col-md-5 m-1">
+                    <Card onClick={() => this.onMarketplaceSelect(marketplace)}>
+                        <CardImg width="50%" src={marketplace.image} alt={marketplace.name} />
                     </Card>
                 </div>
             );
@@ -30,9 +44,14 @@ class Directory extends Component {
                 <div className="row">
                     {directory}
                 </div>
+                <div className="row">
+                    <div className="col-md-5 m-1">
+                        {this.renderSelectedMarketplace(this.state.selectedMarketplace)}
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
-export default Directory
+export default Directory;
