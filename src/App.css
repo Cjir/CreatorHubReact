@@ -40,12 +40,35 @@
 body {
   font-family: "Roboto", serif;
 }
-
+h1 {
+  font-family: "Roboto", serif;
+  color: #ff9b71;
+}
 h5  {
-font-family: "Zilla-slab", serif;
+  font-family: "Zilla-slab", serif;
+  color: #ff9b71;
 }
 
 p {
   font-family: "Roboto", serif;
   font-size: 1.05em;
+}
+
+a{
+  color:#2d3047;
+  font-size: .75em;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+}
+a:link {
+  text-decoration: underline;
+}
+a:hover {
+  color: #ff9b71;
+  font-size: .85em;
+  transition: .15s ease-in-out;
+}
+
+.banner {
+  background-color: #F9FAFC;
 }

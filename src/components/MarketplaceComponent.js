@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
+import { Card, CardImg } from 'reactstrap';
+import MarketInfo from './MainComponent';
 
 class Directory extends Component {
     constructor(props) {
@@ -13,25 +14,10 @@ class Directory extends Component {
         this.setState({ selectedMarketplace: marketplace });
     }
 
-    renderSelectedMarketplace(marketplace) {
-        if (marketplace) {
-            return (
-                <Card>
-                    <CardImg top src={marketplace.image} alt={marketplace.name} />
-                    <CardBody>
-                        <CardTitle><h5>{marketplace.title}</h5></CardTitle>
-                        <CardText><p>{marketplace.description}</p></CardText>
-                    </CardBody>
-                </Card>
-            );
-        }
-        return <div />;
-    }
-
     render() {
         const directory = this.props.marketplace.map(marketplace => {
             return (
-                <div key={marketplace.id} className="col-md-5 m-1">
+                <div key={marketplace.id} className="col-md-3">
                     <Card onClick={() => this.onMarketplaceSelect(marketplace)}>
                         <CardImg width="50%" src={marketplace.image} alt={marketplace.name} />
                     </Card>
@@ -43,12 +29,9 @@ class Directory extends Component {
             <div className="container">
                 <div className="row">
                     {directory}
+                    {MarketInfo}
                 </div>
-                <div className="row">
-                    <div className="col-md-5 m-1">
-                        {this.renderSelectedMarketplace(this.state.selectedMarketplace)}
-                    </div>
-                </div>
+
             </div>
         );
     }
