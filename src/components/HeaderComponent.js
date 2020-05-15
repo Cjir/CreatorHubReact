@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, Jumbotron } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 class Header extends Component {
     constructor(props) {
@@ -21,18 +21,20 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Jumbotron fluid className="banner" max-height="80px">
+                <Jumbotron fluid className="banner" height="600">
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <img src="./assets/images/creatorlogo.png" alt="creatorhub logo" width="50px"/>
+                                <Link to="/home" >
+                                <img src="./assets/images/creatorlogo.png" alt="creatorhub logo" width="80"/>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </Jumbotron>
                 <Navbar className="CreatorHubNav" sticky="top" expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/creatorhublt.png" height="40" alt="creatorhub Logo" /></NavbarBrand>
+                        <NavbarBrand className="mr-auto" href="/home"><img src="/assets/images/creatorhublt.png" height="40" alt="creatorhub Logo" /></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
@@ -42,12 +44,12 @@ class Header extends Component {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/marketplace">
+                                    <NavLink className="nav-link" to="/market">
                                         <i className="fa fa-list fa-lg" /> marketplace
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/">
+                                    <NavLink className="nav-link" to="/blogpages">
                                         <i className="fa fa-info fa-lg" /> BlogPages
                                     </NavLink>
                                 </NavItem>

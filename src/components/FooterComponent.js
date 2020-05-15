@@ -43,13 +43,11 @@ function Footer(props) {
                                 <li className="list"><a href="/">Contact Us</a></li>
                                 <li className="list"><a href="/">Forum</a></li>
                             </ul>
-                        </div>
 
-                        <div className="col text=left">
                             <div className="app-link">
 
-                                <Button className="btn outline">
-                                    <img src="./assets/images/creatorhublt.png" alt="creatorhub button" width="80px" />
+                                <Button outline className="btn" size="small">
+                                    <img src="./assets/images/creatorlogo.png" alt="creatorhub button" width="25" />
                                 </Button>
 
                                 <ul className="list-inline">

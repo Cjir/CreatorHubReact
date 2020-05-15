@@ -1,40 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg } from 'reactstrap';
-import MarketInfo from './MainComponent';
 
-class Directory extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedMarketplace: null
-        }
-    };
-
-    onMarketplaceSelect(marketplace) {
-        this.setState({ selectedMarketplace: marketplace });
-    }
-
-    render() {
-        const directory = this.props.marketplace.map(marketplace => {
-            return (
-                <div key={marketplace.id} className="col-md-3">
-                    <Card onClick={() => this.onMarketplaceSelect(marketplace)}>
-                        <CardImg width="50%" src={marketplace.image} alt={marketplace.name} />
-                    </Card>
-                </div>
-            );
-        });
-
-        return (
-            <div className="container">
-                <div className="row">
-                    {directory}
-                    {MarketInfo}
-                </div>
-
-            </div>
-        );
-    }
+function RenderMarketplaceItem({marketplace}) {
+    return (
+        <Card>
+            <CardImg width="50%" src={marketplace.image} alt={marketplace.name} />
+        </Card>
+    )
 }
 
-export default Directory;
+function Marketplace(props) {
+
+    const directory = props.marketplace.map(marketplace => {
+        return (
+            <div key={marketplace.id} className="col-md-3">
+                <RenderMarketplaceItem marketplace={marketplace}/>
+            </div>
+        );
+    });
+
+    return (
+        <div className="container">
+            <div className="row">
+                {directory}
+
+            </div>
+        </div>
+    );
+}
+
+
+export default Marketplace;

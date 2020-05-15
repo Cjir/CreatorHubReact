@@ -1,33 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
 
-class MarketInfo extends Component {
-
-    renderSelectedMarketplace(marketplace) {
+    function RenderSelectedMarketplace({marketplace}) {
         if (marketplace) {
             return (
-                <Card>
-                    <CardImg top src={marketplace.image} alt={marketplace.name} />
-                    <CardBody>
-                        <CardTitle><h5>{marketplace.title}</h5></CardTitle>
-                        <CardText><p>{marketplace.description}</p></CardText>
-                    </CardBody>
-                </Card>
-            );
-        }
-        return <div />;
-    }
-
-    render() {
-        if (this.props.marketplace) {
-            return (
-                <div className="row">
-                    {this.renderSelectedMarketplace(this.props.marketplace)}
+                <div className="col-md-3">
+                    <Card>
+                        <CardImg top src={marketplace.image} alt={marketplace.name} />
+                        <CardBody>
+                            <CardTitle><h5>{marketplace.title}</h5></CardTitle>
+                            <CardText><p>{marketplace.description}</p></CardText>
+                        </CardBody>
+                    </Card>
                 </div>
             );
         }
         return <div />;
     }
-};
+
+    function MarketInfo(props) {
+        if (props.marketplace) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <RenderSelectedMarketplace marketplace={props.marketplace} />
+                    </div>
+                </div>
+            );
+        }
+        return <div />;
+    }
+
 
 export default MarketInfo;
